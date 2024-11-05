@@ -1,0 +1,31 @@
+<h2>Szczegóły Samochodu</h2>
+
+<div *ngIf="car">
+  <h3>{{ car.brand }} {{ car.model }} ({{ car.year }})</h3>
+
+  <h4>Serwisy:</h4>
+  <ul>
+    <li *ngFor="let service of car.services">
+      {{ service.part }} - {{ service.cost }} PLN
+    </li>
+  </ul>
+
+  <h4>Dodaj serwis:</h4>
+  <form (ngSubmit)="addService()">
+    <input
+      type="text"
+      [(ngModel)]="newService.part"
+      name="part"
+      placeholder="Część"
+      required
+    />
+    <input
+      type="number"
+      [(ngModel)]="newService.cost"
+      name="cost"
+      placeholder="Koszt"
+      required
+    />
+    <button type="submit">Dodaj</button>
+  </form>
+</div>

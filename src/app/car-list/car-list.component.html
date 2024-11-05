@@ -1,0 +1,34 @@
+<h2>Lista Samochodów</h2>
+
+<form (ngSubmit)="addCar()">
+  <input
+    type="text"
+    [(ngModel)]="newCar.brand"
+    name="brand"
+    placeholder="Marka"
+    required
+  />
+  <input
+    type="text"
+    [(ngModel)]="newCar.model"
+    name="model"
+    placeholder="Model"
+    required
+  />
+  <input
+    type="number"
+    [(ngModel)]="newCar.year"
+    name="year"
+    placeholder="Rok"
+    required
+  />
+  <button type="submit">Dodaj samochód</button>
+</form>
+
+<ul>
+  <li *ngFor="let car of cars">
+    {{ car.brand }} {{ car.model }} ({{ car.year }})
+    <button (click)="removeCar(car.id)">Usuń</button>
+    <a [routerLink]="['/car', car.id]">Szczegóły</a>
+  </li>
+</ul>
